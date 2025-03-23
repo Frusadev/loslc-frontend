@@ -1,4 +1,4 @@
-import type { User as UserSchema } from "./userSchemas";
+import type { UserSchema } from "./userSchemas";
 
 export type SurveySchema = {
   id?: string;

@@ -1,6 +1,6 @@
 import { API_VERSION, SERVER_URL } from "@/env";
-import axios, { AxiosError, isAxiosError } from "axios";
-import type { User as UserSchema } from "@/requests/schemas/userSchemas";
+import axios, { isAxiosError } from "axios";
+import type { UserSchema } from "@/requests/schemas/userSchemas";
 import type { User } from "@/types/user";
 import { redirect } from "next/navigation";
 
@@ -41,28 +41,15 @@ export async function requestLoginLink(email: string): Promise<number> {
 }
 
 export async function requestCurrentUser(): Promise<User> {
-  try {
-    const response = await axios<UserSchema>({
-      method: "GET",
-      url: CURRENT_USER_URI,
-      withCredentials: true,
-    });
-    return {
-      id: response.data.id,
-      username: response.data.username,
-      email: response.data.email,
-      accountType: response.data.account_type,
-    };
-  } catch (e) {
-    if (isAxiosError(e)) {
-      console.error(e)
-      switch (e.response?.status) {
-        case 401:
-          redirect("/login");
-          break;
-        default:
-          redirect("/login");
-      }
-    }
-  }
+  const response = await axios<UserSchema>({
+    method: "GET",
+    url: CURRENT_USER_URI,
+    withCredentials: true,
+  });
+  return {
+    id: response.data.id,
+    username: response.data.username,
+    email: response.data.email,
+    accountType: response.data.account_type,
+  };
 }
