@@ -51,8 +51,8 @@ const teamMembers: StaffProfile[] = [
     bio: "BIO Bayédzè",
   },
   {
-    firstName: "ATTER Kallern",
-    lastName: "",
+    firstName: "Kallern",
+    lastName: "ATTER",
     title: "Project Security Tester",
     image: "/staff/kall.png",
     bio: "BIO Kallern",
