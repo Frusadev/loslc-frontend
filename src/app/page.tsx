@@ -1,101 +1,11 @@
-"use client";
-
-import { User } from "@/types/user";
-import { useWindowSize } from "@/utils/stores";
-import { useEffect, useState } from "react";
-import Dashboard from "./components/dashboards/Dashboard";
-import Linknav from "./components/navigation/Linknav";
 import { IoLogoDiscord, IoLogoWhatsapp } from "react-icons/io5";
-import Image from "next/image";
 import Link from "next/link";
-import { Button, buttonVariants } from "@/components/ui/button";
-import ThemeSwitcher from "./components/theming/ThemeSwitcher";
-import MobileLinknav from "./components/navigation/mobile/MobileLinknav";
-import {
-  Drawer,
-  DrawerContent,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
-import { Menu, MenuIcon } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import StaffMember, {
   StaffProfile,
 } from "./components/people/staff/StaffMember";
+import { Navbar } from "./components/navigation/Navbar";
 
-const mobileLinks = [
-  {
-    links: [
-      {
-        name: "WhatsApp",
-        href: "#",
-        description: "Join our WhatsApp community.",
-        icon: <IoLogoWhatsapp color="#25D366" />,
-      },
-      {
-        name: "Discord",
-        href: "#",
-        description: "Join our Discord server.",
-        icon: <IoLogoDiscord color="#5865F2" />,
-      },
-    ],
-    single: false,
-    name: "Join us",
-  },
-  {
-    single: true,
-    name: "Blog",
-    href: "#",
-    links: [],
-  },
-  {
-    single: true,
-    name: "Contact us",
-    href: "#",
-    links: [],
-  },
-  {
-    single: true,
-    name: "Login / Signup",
-    href: "/login",
-    links: [],
-  },
-];
-
-const links = [
-  {
-    links: [
-      {
-        name: "WhatsApp",
-        href: "#",
-        description: "Join our WhatsApp community.",
-        icon: <IoLogoWhatsapp color="#25D366" />,
-      },
-      {
-        name: "Discord",
-        href: "#",
-        description: "Join our Discord server.",
-        icon: <IoLogoDiscord color="#5865F2" />,
-      },
-    ],
-    single: false,
-    name: "Join us",
-  },
-  {
-    single: true,
-    name: "Blog",
-    href: "/blog",
-    links: [],
-  },
-  {
-    single: true,
-    name: "Contact us",
-    href: "#",
-    links: [],
-  },
-];
 
 const teamMembers: StaffProfile[] = [
   {
@@ -141,7 +51,7 @@ const teamMembers: StaffProfile[] = [
     bio: "BIO Bayédzè",
   },
   {
-    firstName: "Kallern",
+    firstName: "ATTER Kallern",
     lastName: "",
     title: "Project Security Tester",
     image: "/staff/kall.png",
@@ -149,70 +59,6 @@ const teamMembers: StaffProfile[] = [
   },
 ];
 
-export function Navbar() {
-  const [windowWidth, setWindowWidth] = useState<number>(0);
-  const [windowHeight, setWindowHeight] = useState<number>(0);
-
-  useEffect(() => {
-    setWindowWidth(window.innerWidth);
-    setWindowHeight(window.innerHeight);
-    window.addEventListener("resize", () => {
-      setWindowWidth(window.innerWidth);
-      setWindowHeight(window.innerHeight);
-    });
-  });
-  return (
-    <div className="bg-background/50 border-b border-b-border border-dashed z-50 backdrop-blur-2xl sticky top-0 flex justify-between w-full h-1/12 px-3 py-1">
-      <div className="flex gap-3 items-center">
-        <Link
-          href={"/"}
-          className="text-xl font-extrabold select-none cursor-default"
-        >
-          LOSLC
-        </Link>
-        {windowWidth > 768 ? <Linknav links={links} /> : <></>}
-      </div>
-      <div className="flex items-center">
-        {windowWidth < 768 ? (
-          <div className="flex gap-3 items-center">
-            <ThemeSwitcher />
-            <Drawer>
-              <DrawerTrigger asChild>
-                <MenuIcon />
-              </DrawerTrigger>
-              <DrawerContent className="min-h-6/12">
-                <DrawerHeader>
-                  <DrawerTitle>Menu</DrawerTitle>
-                </DrawerHeader>
-                <MobileLinknav links={links} />
-                <DrawerFooter>
-                  <Link
-                    href="/login"
-                    className={`${buttonVariants({ variant: "default" })} w-full`}
-                  >
-                    Login / Signup
-                  </Link>
-                </DrawerFooter>
-              </DrawerContent>
-            </Drawer>
-          </div>
-        ) : (
-          <>
-            <Link
-              className={
-                buttonVariants({ variant: "link" }) + " text-foreground"
-              }
-              href={"/login"}
-            >
-              Login / Signup
-            </Link>
-            <ThemeSwitcher />
-          </>
-        )}
-      </div>
-    </div>
-  );
-}
 export default function Home() {
   return (
     <div className="relative flex-col w-screen h-screen scroll-smooth">
@@ -309,7 +155,7 @@ export default function Home() {
               life and drives innovation forward.
             </span>
           </div>
-          <div className="flex flex-col items-center md:grid mt-9 grid-cols-3 gap-y-6 gap-x-6">
+          <div className="flex px-2 items-center flex-wrap justify-center mt-9 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6">
             {teamMembers.map((member, index) => {
               return <StaffMember key={index} profile={member} />;
             })}
