@@ -10,7 +10,7 @@ export default function Navbar({ className }: { className?: string }) {
       <Link href={"/"} className="px-2 font-bold text-xl select-none">
         <Image
           alt="Linux and Open-source lover community logo"
-          src={"/logo.png"}
+          src={"/logo2.png"}
           width={50}
           height={50}
           className="rounded-full"
@@ -18,7 +18,7 @@ export default function Navbar({ className }: { className?: string }) {
       </Link>
       <div className="flex items-center gap-6 text-sm">
         <Link href={"/"} className="text-secondary-foreground/70 hover:text-primary transition-all">
-          Home
+          Join us
         </Link>
         <Link href={"/"} className="text-secondary-foreground/70 hover:text-primary transition-all">
           Upcoming events
