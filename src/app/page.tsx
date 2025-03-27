@@ -1,4 +1,4 @@
-import { IoLogoDiscord, IoLogoWhatsapp } from "react-icons/io5";
+import { IoLogoDiscord, IoLogoGithub, IoLogoWhatsapp } from "react-icons/io5";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import StaffMember, {
@@ -6,56 +6,62 @@ import StaffMember, {
 } from "./components/people/staff/StaffMember";
 import { Navbar } from "./components/navigation/Navbar";
 
-
 const teamMembers: StaffProfile[] = [
   {
     firstName: "Daniel",
     lastName: "AMETSOWOU",
+    email: "frusadev@gmail.com",
     title: "Founder",
     image: "/staff/dani.png",
-    bio: "Daniel is passionate about science and technology. He began programming at 12 and has been building projects and honing his skills ever since.",
+    bio: "Daniel is deeply interested in science and technology. He began programming at 12 and has been building projects and honing his skills ever since.",
   },
   {
     firstName: "Denise",
     lastName: "DEABALO",
+    email: "dinaisedeabalo@gmail.com",
     title: "Secretary",
     image: "/staff/den.png",
-    bio: "BIO Denise",
+    bio: "Denise is a full-stack web developer who builds dynamic, responsive, and efficient web applications. She loves solving problems and exploring new technologies to enhance user experiences.",
   },
   {
     firstName: "Rayane",
     lastName: "TCHABODI",
-    title: "Communication lead",
+    email: "rayanetchabodi360@gmail.com",
+    title: "Communication Lead",
     image: "/staff/ray.jpg",
-    bio: "BIO Rayane",
+    bio: "Rayane is a full-stack web developer who enjoys creating modern, scalable applications. He is always eager to learn new technologies and improve user experiences.",
   },
   {
     firstName: "Laureen",
     lastName: "EKON",
+    email: "ekonlaureen16@gmail.com",
     title: "Community Relations Manager",
     image: "/staff/laur.png",
-    bio: "BIO Laureen",
+    bio: "Laureen is dedicated to open-source and robotics, actively contributing to innovative projects and collaborating with the tech community. She thrives on learning and staying ahead of emerging technologies.",
   },
   {
     firstName: "Emerick",
     lastName: "MITCHIKPE",
+    email: "mitchikpeemerick2@gmail.com",
     title: "Community Manager",
     image: "/staff/emer.png",
-    bio: "BIO Emerick",
+    bio: "Emerick specializes in cybersecurity and is the founder of ETHIX Community. As a CTF player, challenge creator, and freelance junior penetration tester, he is steadily advancing in the field.",
   },
   {
     firstName: "Bayédzè",
     lastName: "COMLAN",
+    email: "bayedzenetworking@gmail.com",
     title: "Community Manager",
     image: "/staff/bay.png",
-    bio: "BIO Bayédzè",
+    bio: "Bayédzè is a system administrator with a strong focus on network security and infrastructure management. He enjoys optimizing systems and ensuring reliable performance.",
   },
   {
     firstName: "Kallern",
     lastName: "ATTER",
+    email: "hackusman@gmail.com",
     title: "Project Security Tester",
     image: "/staff/kall.png",
-    bio: "BIO Kallern",
+    bio: "Kallern is a cybersecurity enthusiast passionate about ethical hacking and digital security. He continuously sharpens his skills to protect systems from emerging threats.",
   },
 ];
 
@@ -167,11 +173,14 @@ export default function Home() {
           Join our community and start collaborating today.
         </span>
         <div className="flex items-center justify-between px-11 py-10 gap-x-20">
-          <Link href="#">
+          <Link href="https://chat.whatsapp.com/BcapIUdCapFLBsHgdXVfcQ">
             <IoLogoWhatsapp size={50} color="#25D366" />
           </Link>
-          <Link href="#">
+          <Link href="https://discord.gg/eu7WKAnv">
             <IoLogoDiscord size={50} color="#5865F2" />
+          </Link>
+          <Link href="https://github.com/LOSLC">
+            <IoLogoGithub size={50} />
           </Link>
         </div>
       </div>
