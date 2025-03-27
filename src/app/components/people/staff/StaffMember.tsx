@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -7,10 +7,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Link from "next/link";
 
 export interface StaffProfile {
   firstName: string;
   lastName: string;
+  email: string;
   title: string;
   image: string;
   bio: string;
@@ -35,7 +37,12 @@ export default function StaffMember({ profile }: { profile: StaffProfile }) {
       </CardContent>
       <CardFooter className="h-full">
         <div className="flex w-full h-full items-end justify-center">
-          <Button>Contact {profile.firstName}</Button>
+          <Link
+            href={`mailto:${profile.email}`}
+            className={`${buttonVariants({ variant: "default" })}`}
+          >
+            Contact {profile.firstName}
+          </Link>
         </div>
       </CardFooter>
     </Card>
