@@ -20,7 +20,7 @@ export interface StaffProfile {
 
 export default function StaffMember({ profile }: { profile: StaffProfile }) {
   return (
-    <Card className="w-10/12 h-[500px] md:w-[350px] select-none">
+    <Card className="w-10/12 min-h-[500px] md:w-[350px] select-none">
       <CardHeader className="flex flex-col justify-center items-center">
         <img
           src={profile.image}
