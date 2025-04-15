@@ -25,13 +25,13 @@ interface LinkGroup {
 
 export default function MobileLinknav({ links }: { links: LinkGroup[] }) {
   return (
-    <div className="py-3">
-      <div className="flex flex-col items-center">
+    <div className="py-4 px-2">
+      <div className="flex flex-col items-center gap-2">
         {links.map((group, index) => {
           if (group.single && group.href) {
             return (
               <Link
-                className={buttonVariants({ variant: "ghost" }) + " w-full"}
+                className={`${buttonVariants({ variant: "ghost" })} w-full justify-start text-lg py-3`}
                 href={group.href}
                 key={index}
               >
@@ -44,27 +44,31 @@ export default function MobileLinknav({ links }: { links: LinkGroup[] }) {
                 <AccordionItem
                   key={index}
                   value={group.name}
-                  className="flex flex-col transition-all justify-stretch items-center w-full"
+                  className="border-b-0"
                 >
                   <AccordionTrigger
-                    className={`${buttonVariants({ variant: "ghost" })} w-full`}
+                    className={`${buttonVariants({ variant: "ghost" })} w-full justify-between text-lg py-3`}
                   >
                     {group.name}
                   </AccordionTrigger>
-                  {group.links.map((link, i) => {
-                    return (
-                      <AccordionContent key={i} className="motion-preset-fade">
-                        <Link
-                          href={link.href}
-                          key={link.name}
-                          className="flex items-center gap-1"
-                        >
-                          {link.icon ? link.icon : <></>}
-                          {link.name}
-                        </Link>
-                      </AccordionContent>
-                    );
-                  })}
+                  <div className="flex flex-col space-y-1 pl-2">
+                    {group.links.map((link, i) => {
+                      return (
+                        <AccordionContent key={i}>
+                          <Link
+                            href={link.href}
+                            className="flex items-center gap-2 py-2 px-4 rounded-md hover:bg-accent transition-colors"
+                          >
+                            {link.icon ? <span className="text-lg">{link.icon}</span> : <></>}
+                            <div className="flex flex-col">
+                              <span className="text-foreground">{link.name}</span>
+                              <span className="text-muted-foreground text-xs">{link.description}</span>
+                            </div>
+                          </Link>
+                        </AccordionContent>
+                      );
+                    })}
+                  </div>
                 </AccordionItem>
               </Accordion>
             );
